@@ -23,7 +23,9 @@ class LoginController extends Controller
     {
         try {
             $user = Socialite::driver('twitter')->user();
-            dd($user);
+            session(['twitterUser' => $user]);
+
+            return redirect()->intended('/form');
         } catch (\Exception $e) {
             die('Did you deny the app access?');
         }

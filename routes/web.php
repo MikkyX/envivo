@@ -15,3 +15,7 @@
 Route::get('/','LoginController@index');
 Route::get('/twitter/login','LoginController@twitterLogin');
 Route::get('/twitter/callback','LoginController@twitterCallback');
+
+// THIS IS WHERE THE MAGIC HAPPENS
+Route::get('/form','TwitterController@index');
+Route::post('/post','TwitterController@postTweet');
