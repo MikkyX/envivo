@@ -8,7 +8,7 @@
     <title>Tweet It Live - Compose</title>
 </head>
 <body>
-    <form action="/post" method="post">
+    <form action="/post" enctype="multipart/form-data" method="post">
         {!! csrf_field() !!}
         Prefix hashtags:<br />
         <input id="prefix_hashtags" name="prefix_hashtags" type="text" /><br />
@@ -16,6 +16,8 @@
         <textarea cols="40" id="tweet" name="tweet" rows="4"></textarea><br />
         Suffix hashtags:<br />
         <input id="suffix_hashtags" name="suffix_hashtags" type="text" /><br />
+        Image:<br />
+        <input id="image" name="image" type="file" /><br />
         <input type="submit" />
     </form>
 </body>

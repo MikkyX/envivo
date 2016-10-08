@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use File;
 use Twitter;
 
 class TwitterController extends Controller
@@ -30,15 +31,30 @@ class TwitterController extends Controller
             'secret' => session('twitterUser')->tokenSecret,
         ]);
 
-        // Build the tweet
+        // Set up the basic Tweet object
+        $tweet = [
+            'format' => 'json',
+        ];
+
+        // Build the tweet text and add that on
         $tweetText = trim($tweetForm->prefix_hashtags.' '. $tweetForm->tweet.' '.$tweetForm->suffix_hashtags);
+        $tweet['status'] = $tweetText;
+
+        // Check for image
+        if ($tweetForm->file('image')->isValid()) {
+            // Upload to Twitter
+            $uploadedImage = Twitter::uploadMedia([
+                'media' => File::get($tweetForm->file('image')->path()),
+            ]);
+
+            if ($uploadedImage) {
+                $tweet['media_ids'] = $uploadedImage->media_id_string;
+            }
+        }
 
         // Post the tweet
         try {
-            return Twitter::postTweet([
-                'format' => 'json',
-                'status' => $tweetText,
-            ]);
+            return Twitter::postTweet($tweet);
         } catch (\Exception $e) {
             die($e->getMessage());
         }
