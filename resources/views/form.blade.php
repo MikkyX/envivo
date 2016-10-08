@@ -10,8 +10,12 @@
 <body>
     <form action="/post" method="post">
         {!! csrf_field() !!}
+        Prefix hashtags:<br />
+        <input id="prefix_hashtags" name="prefix_hashtags" type="text" /><br />
         Tweet (max 140 characters):<br />
         <textarea cols="40" id="tweet" name="tweet" rows="4"></textarea><br />
+        Suffix hashtags:<br />
+        <input id="suffix_hashtags" name="suffix_hashtags" type="text" /><br />
         <input type="submit" />
     </form>
 </body>

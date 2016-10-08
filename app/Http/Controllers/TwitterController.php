@@ -30,11 +30,14 @@ class TwitterController extends Controller
             'secret' => session('twitterUser')->tokenSecret,
         ]);
 
+        // Build the tweet
+        $tweetText = trim($tweetForm->prefix_hashtags.' '. $tweetForm->tweet.' '.$tweetForm->suffix_hashtags);
+
         // Post the tweet
         try {
             return Twitter::postTweet([
                 'format' => 'json',
-                'status' => $tweetForm->tweet,
+                'status' => $tweetText,
             ]);
         } catch (\Exception $e) {
             die($e->getMessage());
