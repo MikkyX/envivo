@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// TWITTER LOGIN AND CALLBACK FUNCTIONS
+Route::get('/','LoginController@index');
+Route::get('/twitter/login','LoginController@twitterLogin');
+Route::get('/twitter/callback','LoginController@twitterCallback');
