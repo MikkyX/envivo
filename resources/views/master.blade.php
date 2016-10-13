@@ -36,7 +36,7 @@
     @yield('content')
     <footer>
         <h1 class="title is-3">Tweet It Live!</h1>
-        <p>v{{ config('release.version') }} - Made with love, Laravel and Vue.js by <a href="https://www.michaelprice.co.uk">Michael Price</a></p>
+        <p>v{{ config('release.version') }} - Made with love, Laravel and Vue.js by <a href="https://www.michael-price.co.uk">Michael Price</a></p>
         <p>
             <a href="https://github.com/MikkyX/tweetitlive" title="Source code on GitHub"><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
             <a href="https://twitter.com/michaelprice_uk" title="Tweet me!"><i class="fa fa-twitter fa-2x"></i></a>
