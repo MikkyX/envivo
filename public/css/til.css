@@ -1,0 +1,78 @@
+/* GLOBAL */
+body {
+    background: #feffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #feffff 0%, #ffffff 75%, #1da1f2 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #feffff 0%,#ffffff 75%,#1da1f2 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #feffff 0%,#ffffff 75%,#1da1f2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    display: flex;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#1da1f2',GradientType=0 ); /* IE6-9 */
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+header {
+    background: #4a4a4a;
+    color: #fff;
+    padding: 1em;
+}
+
+    header h1.title {
+        color: #fff;
+        margin-bottom: 0;
+    }
+
+footer {
+    color: #fff;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+    footer a {
+        color: #fff;
+    }
+
+.button.is-twitter {
+    background-color: #1da1f2;
+    border-width: 0;
+    color: #fff;
+}
+
+/* HOMEPAGE */
+#start-here {
+    text-align: center;
+}
+
+    #start-here p {
+        margin: 10px 0;
+    }
+
+    #start-here a:not(.button) {
+        color: #4a4a4a;
+    }
+
+    #start-here a:not(.button):hover {
+        text-decoration: underline;
+    }
+
+/* TWEET FORM */
+.length-ok {
+    color: #00cc00;
+}
+
+.over-limit {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+h4.title {
+    margin-bottom: 2px;
+}
+
+/* NOTIFICATION PANEL */
+#notifications {
+    position: absolute;
+    right: 20px;
+    top: 80px;
+    width: 20%;
+}
