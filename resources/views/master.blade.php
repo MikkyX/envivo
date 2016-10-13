@@ -19,10 +19,7 @@
 <body id="@yield('body-id','body')">
     <header class="level">
         <div class="level-left">
-            SOMETHING
-        </div>
-        <div class="level-item has-text-centered">
-            <h1 class="title is-3">Tweet It Live!</h1>
+
         </div>
         <div class="level-right">
             @if (session('twitterUser'))
@@ -38,13 +35,19 @@
     </header>
     @yield('content')
     <footer>
-        <p>v{{ config('release.version') }} - Made with love and Laravel by <a href="https://www.michaelprice.co.uk">Michael Price</a></p>
+        <h1 class="title is-3">Tweet It Live!</h1>
+        <p>v{{ config('release.version') }} - Made with love, Laravel and Vue.js by <a href="https://www.michaelprice.co.uk">Michael Price</a></p>
         <p>
             <a href="https://github.com/MikkyX/tweetitlive" title="Source code on GitHub"><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
             <a href="https://twitter.com/michaelprice_uk" title="Tweet me!"><i class="fa fa-twitter fa-2x"></i></a>
         </p>
     </footer>
-    <div id="notifications">Notifications up here</div>
+    <div id="notifications">
+        <div class="notification is-success">Tweet sent successfully!</div>
+        <div class="notification is-danger">I couldn't send your last tweet!<br />[170] Status missing</div>
+        <div class="notification is-info">@Official_Darlo retweeted 'Martin Gray signs...'</div>
+        <div class="notification is-primary">@Official_Darlo liked 'Martin Gray signs...'</div>
+    </div>
     @stack('scripts')
 </body>
 </html>
