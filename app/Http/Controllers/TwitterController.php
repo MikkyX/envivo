@@ -17,10 +17,6 @@ class TwitterController extends Controller
 
     public function index()
     {
-//        $twitterUser = session('twitterUser');
-//        print_r($twitterUser->token);
-//        //dd(session('twitterUser'));
-
         return view('form');
     }
 
@@ -37,7 +33,7 @@ class TwitterController extends Controller
         ];
 
         // Build the tweet text and add that on
-        $tweetText = trim($tweetForm->prefix_hashtags.' '. $tweetForm->tweet.' '.$tweetForm->suffix_hashtags);
+        $tweetText = trim($tweetForm->tweet).' '.trim($tweetForm->suffix_hashtags);
         $tweet['status'] = $tweetText;
 
         // Check for image
@@ -54,9 +50,10 @@ class TwitterController extends Controller
 
         // Post the tweet
         try {
-            return Twitter::postTweet($tweet);
+            Twitter::postTweet($tweet);
+            return 'OK';
         } catch (\Exception $e) {
-            die($e->getMessage());
+            return 'ERR:'.$e->getMessage();
         }
     }
 }
