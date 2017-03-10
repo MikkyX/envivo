@@ -5,48 +5,48 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css" rel="stylesheet" type="text/css" />
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link href="/css/til.css" rel="stylesheet" type="text/css" />
     <script src="https://use.fontawesome.com/97d3813f05.js"></script>
-    @if (env('APP_ENV') == 'local')
-    <script src="/js/vue.js"></script>
-    @else
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js"></script>
-    @endif
     <title>@yield('meta-title')</title>
-    <meta name="description" content="A web application for tweeting live from your conference or event" />
+    <meta name="description" content="The best way to share live updates from any event" />
 </head>
 <body id="@yield('body-id','body')">
-    <header class="level">
-        <div class="level-left">
-
-        </div>
-        <div class="level-right">
-            @if (session('twitterUser'))
-            <i class="fa fa-heart"></i>&nbsp;&nbsp;0
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fa fa-retweet"></i>&nbsp;&nbsp;0
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="button is-danger" href="/logout">Log Out</a>
-            @else
-            Something Else
-            @endif
+    <header>
+        <div class="container">
+            <div class="row">
+                @yield('header')
+            </div>
         </div>
     </header>
     @yield('content')
     <footer>
-        <h1 class="title is-3">Tweet It Live!</h1>
-        <p>v{{ config('release.version') }} - Made with love, Laravel and Vue.js by <a href="https://www.michael-price.co.uk">Michael Price</a></p>
-        <p>
-            <a href="https://github.com/MikkyX/tweetitlive" title="Source code on GitHub"><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
-            <a href="https://twitter.com/michaelprice_uk" title="Tweet me!"><i class="fa fa-twitter fa-2x"></i></a>
-        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2>Twitter App</h2>
+                    <p>v{{ config('release.version') }} - Made with love, Laravel and Vue.js by <a href="https://www.mikkyx.co.uk">Michael Price</a></p>
+                    <p>
+                        <a href="https://github.com/mikkyx/tweetitlive" title="Source code on GitHub"><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
+                        <a href="https://twitter.com/mikkyx" title="Tweet me!"><i class="fa fa-twitter fa-2x"></i></a>
+                    </p>
+                    <p>
+                        <a href="/about">About</a> | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
     <div id="notifications">
-        <div class="notification is-success">Tweet sent successfully!</div>
-        <div class="notification is-danger">I couldn't send your last tweet!<br />[170] Status missing</div>
-        <div class="notification is-info">@Official_Darlo retweeted 'Martin Gray signs...'</div>
-        <div class="notification is-primary">@Official_Darlo liked 'Martin Gray signs...'</div>
+        <div class="alert alert-success">Tweet sent successfully!</div>
+        <div class="alert alert-danger">I couldn't send your last tweet!<br />[170] Status missing</div>
+        <div class="alert alert-info">@Official_Darlo retweeted 'Martin Gray signs...'</div>
+        <div class="alert alert-warning">@Official_Darlo liked 'Martin Gray signs...'</div>
     </div>
     @stack('scripts')
 </body>

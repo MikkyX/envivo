@@ -14,16 +14,14 @@ body {
 header {
     background: #4a4a4a;
     color: #fff;
-    padding: 1em;
 }
 
 footer {
     color: #fff;
     padding-bottom: 1em;
-    text-align: center;
 }
 
-    footer h1.title:not(:last-child) {
+    footer h1 {
         color: #fff;
         margin-bottom: 5px;
     }
@@ -32,28 +30,7 @@ footer {
         color: #fff;
     }
 
-.button.is-twitter {
-    background-color: #1da1f2;
-    border-width: 0;
-    color: #fff;
-}
-
 /* HOMEPAGE */
-#start-here {
-    text-align: center;
-}
-
-    #start-here p {
-        margin: 10px 0;
-    }
-
-    #start-here a:not(.button) {
-        color: #4a4a4a;
-    }
-
-    #start-here a:not(.button):hover {
-        text-decoration: underline;
-    }
 
 /* TWEET FORM */
 .length-ok {

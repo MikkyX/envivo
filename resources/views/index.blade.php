@@ -3,16 +3,16 @@
 @section('body-id','homepage')
 
 @section('content')
-    <div id="start-here">
-        <p>Start here...</p>
-        <p>
-            <a class="button is-twitter is-large" href="/twitter/login">
-                <span class="icon is-medium">
-                    <i class="fa fa-twitter"></i>
-                </span>
-                <span>Sign in with Twitter</span>
-            </a>
-        </p>
-        <p><a href="/about">About</a> | <a href="/privacy">Privacy Policy</a> | <a href="/terms">T&amp;Cs</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <p>Start here...</p>
+                <p>
+                    <a class="btn btn-lg btn-info" href="/twitter/login">
+                        <i class="fa fa-twitter"></i>&nbsp;&nbsp;Sign in with Twitter
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
 @endsection
