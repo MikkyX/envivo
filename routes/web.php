@@ -19,3 +19,4 @@ Route::get('/twitter/callback','LoginController@twitterCallback');
 // THIS IS WHERE THE MAGIC HAPPENS
 Route::get('/form','TwitterController@index');
 Route::post('/tweet','TwitterController@postTweet');
+Route::get('/logout','TwitterController@logout');

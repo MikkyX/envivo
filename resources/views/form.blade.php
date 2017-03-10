@@ -1,5 +1,5 @@
 @extends('master')
-@section('meta-title','@'.session('twitterUser')->nickname.' - Tweet It Live')
+@section('meta-title','@'.$user->screen_name.' - Tweet It Live')
 @section('body-id','form')
 @section('header')
     <div class="col-xs-12 col-md-9"></div>
@@ -12,14 +12,14 @@
         <div class="row">
             <div class="col-xs-3"><!-- spacer --></div>
             <div class="col-xs-1 text-right">
-                <img src="{{ str_replace('http','https',session('twitterUser')->avatar) }}" />
+                <img src="{{ $user->profile_image_url_https }}" />
             </div>
             <div class="col-xs-5">
                 <form action="/tweet" method="post" v-on:submit.prevent="postTweet">
                     {!! csrf_field() !!}
                     <div class="row">
                         <div class="col-xs-9">
-                            {{ '@'.session('twitterUser')->nickname }}
+                            {{ '@'.$user->screen_name }}
                         </div>
                         <div class="col-xs-3 text-right">
                             <span v-bind:class="lengthTest">@{{ remaining_characters }}</span>
