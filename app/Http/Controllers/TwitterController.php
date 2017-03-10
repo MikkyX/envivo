@@ -6,27 +6,41 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use File;
+use Redirect;
+use Session;
 use Twitter;
 
 class TwitterController extends Controller
 {
+
     public function __construct()
     {
 
     }
 
+    /**
+     * Show the form for sending tweets
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        return view('form');
+        // Retrieve the user
+        $user = Twitter::getCredentials();
+
+        return view('form',[
+            'user' => $user
+        ]);
     }
 
+    /**
+     * Receive the AJAX request and attempt to send a tweet through the API
+     *
+     * @param Request $tweetForm
+     * @return string
+     */
     public function postTweet(Request $tweetForm)
     {
-        Twitter::reconfig([
-            'token'  => session('twitterUser')->token,
-            'secret' => session('twitterUser')->tokenSecret,
-        ]);
-
         // Set up the basic Tweet object
         $tweet = [
             'format' => 'json',
@@ -55,5 +69,11 @@ class TwitterController extends Controller
         } catch (\Exception $e) {
             return 'ERR:'.$e->getMessage();
         }
+    }
+
+    public function logout()
+    {
+        Session::forget('access_token');
+        return Redirect::to('/')->with('goodFlash','You have been logged out.');
     }
 }
