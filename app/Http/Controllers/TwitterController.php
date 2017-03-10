@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use File;
+use Redirect;
 use Twitter;
 
 class TwitterController extends Controller
@@ -55,5 +56,11 @@ class TwitterController extends Controller
         } catch (\Exception $e) {
             return 'ERR:'.$e->getMessage();
         }
+    }
+
+    public function logout()
+    {
+        Session::forget('access_token');
+        return Redirect::to('/')->with('goodFlash','You have been logged out.');
     }
 }
