@@ -15,7 +15,7 @@
                 <img src="{{ $user->profile_image_url_https }}" />
             </div>
             <div class="col-xs-5">
-                <form action="/tweet" method="post" v-on:submit.prevent="postTweet">
+                <form action="/tweet" enctype="multipart/form-data" id="tweetForm" method="post" v-on:submit.prevent="postTweet">
                     {!! csrf_field() !!}
                     <div class="row">
                         <div class="col-xs-9">
@@ -50,7 +50,7 @@
                             <span class="help-block"><label><input id="press_enter" name="press_enter" type="checkbox" v-model="pressEnterToSend" /> Press Enter to Send</label></span>
                         </div>
                         <div class="col-xs-6">
-
+                            <input id="image" name="image" type="file" />
                         </div>
                     </div>
                     <div class="row">
@@ -111,12 +111,9 @@
                     }
                 },
                 postTweet: function() {
-                    this.$http.post('/tweet',{
-                        '_token': document.querySelector('input[name=_token]').value,
-                        'tweet': document.getElementById('tweet').value,
-                        'prefix_hashtags': document.getElementById('prefix_hashtags').value,
-                        'suffix_hashtags': document.getElementById('suffix_hashtags').value
-                    }).then((response) => {
+                    formData = new FormData(document.getElementById('tweetForm'));
+
+                    this.$http.post('/tweet',formData).then((response) => {
                         if (response.body == 'OK') {
                             // Tweet sent successfully!
                             // Reset the form for the next one

@@ -65,7 +65,7 @@ class TwitterController extends Controller
         $tweet['status'] = $tweetText;
 
         // Check for image
-        if ($tweetForm->has('image') && $tweetForm->file('image')->isValid()) {
+        if ($tweetForm->file('image')->isValid()) {
             // Upload to Twitter
             $uploadedImage = Twitter::uploadMedia([
                 'media' => File::get($tweetForm->file('image')->path()),
