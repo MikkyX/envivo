@@ -49,8 +49,13 @@
                         <div class="col-xs-6">
                             <span class="help-block"><label><input id="press_enter" name="press_enter" type="checkbox" v-model="pressEnterToSend" /> Press Enter to Send</label></span>
                         </div>
-                        <div class="col-xs-6 text-right">
-                            <input class="btn btn-success" id="send_tweet" type="submit" v-bind:disabled="remaining_characters >= 139 || remaining_characters < 0" />
+                        <div class="col-xs-6">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="btn btn-block btn-success" id="send_tweet" type="submit" v-bind:disabled="remaining_characters >= 139 || remaining_characters < 0" />
                         </div>
                     </div>
                 </form>
