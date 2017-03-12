@@ -118,6 +118,7 @@
                             // Tweet sent successfully!
                             // Reset the form for the next one
                             this.tweet = '';
+                            document.getElementById('image').value = '';
                             document.getElementById('tweet').focus();
                         }
                     });
