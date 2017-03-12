@@ -65,7 +65,7 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
     <script>
         new Vue({
             el: 'body',
