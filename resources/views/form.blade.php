@@ -84,7 +84,7 @@
                     };
                 },
                 remaining_characters: function() {
-                    // Stsrt at maxLength
+                    // Start at maxLength
                     remaining = this.tweetMaxLength;
 
                     // Remove prefix (plus space)
