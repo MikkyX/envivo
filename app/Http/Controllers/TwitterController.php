@@ -81,7 +81,7 @@ class TwitterController extends Controller
             Twitter::postTweet($tweet);
             return 'OK';
         } catch (\Exception $e) {
-            return 'ERR:'.$e->getMessage();
+            return $e->getMessage();
         }
     }
 
