@@ -43,10 +43,10 @@
         </div>
     </footer>
     <div id="notifications">
-        <div class="alert alert-success">Tweet sent successfully!</div>
-        <div class="alert alert-danger">I couldn't send your last tweet!<br />[170] Status missing</div>
-        <div class="alert alert-info">@Official_Darlo retweeted 'Martin Gray signs...'</div>
-        <div class="alert alert-warning">@Official_Darlo liked 'Martin Gray signs...'</div>
+        <div class="alert @{{ notification.alertClass }}" transition="fade" v-for="notification in notifications">
+            <strong>@{{ notification.title }}</strong><br />
+            <small>@{{ notification.content }}</small>
+        </div>
     </div>
     @stack('scripts')
 </body>

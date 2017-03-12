@@ -55,7 +55,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input class="btn btn-block btn-success" id="send_tweet" type="submit" v-bind:disabled="remaining_characters >= 139 || remaining_characters < 0" />
+                            <input class="btn btn-block btn-success" id="send_tweet" type="submit" value="Send" v-bind:disabled="remaining_characters >= 138 || remaining_characters < 0 || tweetInProgess" />
                         </div>
                     </div>
                 </form>
@@ -67,13 +67,20 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
     <script>
+        Vue.component('notification',{
+            props: ['alertClass','message'],
+            template: '<div class="alert @{{ alertClass }}">@{{ message }}</div>'
+        });
+
         new Vue({
             el: 'body',
             data: {
+                notifications: [],
                 pressEnterToSend: true,
                 prefixHashtags: '',
                 suffixHashtags: '',
                 tweet: '',
+                tweetInProgress: false,
                 tweetMaxLength: 140
             },
             computed: {
@@ -112,15 +119,41 @@
                 },
                 postTweet: function() {
                     formData = new FormData(document.getElementById('tweetForm'));
+                    this.tweetInProgress = true;
 
                     this.$http.post('/tweet',formData).then((response) => {
                         if (response.body == 'OK') {
                             // Tweet sent successfully!
+                            // Add a notification
+                            this.notifications.push({
+                                'alertClass': 'alert-success',
+                                'title': 'Tweet sent successfully!',
+                                'content': this.tweet.substring(0,30)+'...'
+                            });
+
                             // Reset the form for the next one
                             this.tweet = '';
                             document.getElementById('image').value = '';
                             document.getElementById('tweet').focus();
+                        } else {
+                            // Add an error notification
+                            this.notifications.push({
+                                'alertClass': 'alert-danger',
+                                'title': 'Error sending tweet',
+                                'content': response.body
+                            });
                         }
+
+                        // Either way, something should've been pushed so we
+                        // need to set a timer to remove it
+                        // Source: http://stackoverflow.com/questions/38399050/vue-equivalent-of-settimeout
+                        var self = this;
+                        setTimeout(function() {
+                            self.notifications.shift();
+                        },5000);
+
+                        // Release the submit button
+                        this.tweetInProgress = false;
                     });
                 }
             }
