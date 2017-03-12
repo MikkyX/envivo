@@ -25,12 +25,17 @@ class TwitterController extends Controller
      */
     public function index()
     {
-        // Retrieve the user
-        $user = Twitter::getCredentials();
+        // We need the access token session here
+        if (Session::has('access_token')) {
+            // Retrieve the user
+            $user = Twitter::getCredentials();
 
-        return view('form',[
-            'user' => $user
-        ]);
+            return view('form', [
+                'user' => $user
+            ]);
+        }
+
+        return Redirect::to('/')->with('badFlash','Your login has timed out.');
     }
 
     /**
