@@ -42,12 +42,7 @@
             </div>
         </div>
     </footer>
-    <div id="notifications">
-        <div class="alert @{{ notification.alertClass }}" transition="fade" v-for="notification in notifications">
-            <strong>@{{ notification.title }}</strong><br />
-            <small>@{{ notification.content }}</small>
-        </div>
-    </div>
+    @yield('notifications')
     @stack('scripts')
 </body>
 </html>

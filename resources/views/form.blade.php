@@ -64,6 +64,14 @@
         </div>
     </div>
 @endsection
+@section('notifications')
+    <div id="notifications">
+        <div class="alert @{{ notification.alertClass }}" transition="fade" v-for="notification in notifications">
+            <strong>@{{ notification.title }}</strong><br />
+            <small>@{{ notification.content }}</small>
+        </div>
+    </div>
+@endsection
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
     <script>
