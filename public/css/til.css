@@ -53,3 +53,19 @@ h4.title {
     top: 80px;
     width: 20%;
 }
+
+.fade-transition {
+    transition: all 1s ease;
+}
+
+.fade-enter, .fade-leave {
+    opacity: 0;
+}
+
+.fade-enter {
+    margin-top: 2em;
+}
+
+.fade-leave {
+    margin-top: -2em;
+}
