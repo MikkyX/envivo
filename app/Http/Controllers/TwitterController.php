@@ -51,8 +51,17 @@ class TwitterController extends Controller
             'format' => 'json',
         ];
 
-        // Build the tweet text and add that on
-        $tweetText = trim($tweetForm->tweet).' '.trim($tweetForm->suffix_hashtags);
+        // Build the tweet text and add prefix and suffix
+        $tweetText = trim($tweetForm->tweet);
+
+        if (trim($tweetForm->prefix_hashtags)) {
+            $tweetText = trim($tweetForm->prefix_hashtags).' '.$tweetText;
+        }
+
+        if (trim($tweetForm->suffix_hashtags)) {
+            $tweetText = $tweetText.' '.trim($tweetForm->suffix_hashtags);
+        }
+
         $tweet['status'] = $tweetText;
 
         // Check for image

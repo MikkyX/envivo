@@ -71,6 +71,7 @@
             el: 'body',
             data: {
                 pressEnterToSend: true,
+                prefixHashtags: '',
                 suffixHashtags: '',
                 tweet: '',
                 tweetMaxLength: 140
@@ -83,8 +84,24 @@
                     };
                 },
                 remaining_characters: function() {
-                    // Return allowed length, minus length of tweet, length of suffix, and 1 for space
-                    return this.tweetMaxLength - this.tweet.length - this.suffixHashtags.length - 1
+                    // Stsrt at maxLength
+                    remaining = this.tweetMaxLength;
+
+                    // Remove prefix (plus space)
+                    if (this.prefixHashtags.length) {
+                        remaining -= this.prefixHashtags.length + 1;
+                    }
+
+                    // Remove suffix (plus space)
+                    if (this.suffixHashtags.length) {
+                        remaining -= this.suffixHashtags.length + 1;
+                    }
+
+                    // Remove tweet
+                    remaining -= this.tweet.length;
+
+                    // Return
+                    return remaining;
                 }
             },
             methods: {
@@ -97,6 +114,7 @@
                     this.$http.post('/tweet',{
                         '_token': document.querySelector('input[name=_token]').value,
                         'tweet': document.getElementById('tweet').value,
+                        'prefix_hashtags': document.getElementById('prefix_hashtags').value,
                         'suffix_hashtags': document.getElementById('suffix_hashtags').value
                     }).then((response) => {
                         if (response.body == 'OK') {
