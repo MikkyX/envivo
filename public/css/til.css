@@ -1,24 +1,32 @@
 /* GLOBAL */
 body {
     background: #feffff; /* Old browsers */
-    background: -moz-linear-gradient(top, #feffff 0%, #ffffff 75%, #1da1f2 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #feffff 0%,#ffffff 75%,#1da1f2 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #feffff 0%,#ffffff 75%,#1da1f2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     display: flex;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#1da1f2',GradientType=0 ); /* IE6-9 */
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
 }
 
 header {
-    background: #4a4a4a;
+    background: #eeeeee;
+    border-bottom: 4px solid #5bc0de;
     color: #fff;
+    padding: 0.5em 0;
+}
+
+.headerLinks a:not([class^='btn']) {
+    color: #999;
+    margin: 0 1em;
+}
+
+.alertBanner {
+    align-self: flex-start;
 }
 
 footer {
+    background: #5bc0de;
     color: #fff;
-    padding-bottom: 1em;
+    padding: 0.5em 0;
 }
 
     footer h1 {
@@ -28,6 +36,10 @@ footer {
 
     footer a {
         color: #fff;
+    }
+
+    footer p:last-child {
+        margin-bottom: 0em;
     }
 
 /* HOMEPAGE */
@@ -48,10 +60,10 @@ h4.title {
 
 /* NOTIFICATION PANEL */
 #notifications {
+    left: 2%;
     position: absolute;
-    right: 20px;
-    top: 80px;
-    width: 20%;
+    top: 60px;
+    width: 96%;
 }
 
 .fade-transition {
@@ -68,4 +80,27 @@ h4.title {
 
 .fade-leave {
     margin-top: -2em;
+}
+
+/* TWEET FORM */
+h2.charCount {
+    line-height: 40px;
+}
+
+/* MOBILE BREAKPOINT */
+@media (min-width: 768px) {
+    header, footer {
+        padding: 1em 0;
+    }
+
+    #notifications {
+        left: auto;
+        right: 20px;
+        top: 80px;
+        width: 20%;
+    }
+
+    .headerLinks {
+        text-align: right;
+    }
 }
