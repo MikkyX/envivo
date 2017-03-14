@@ -20,3 +20,7 @@ Route::get('/twitter/callback','LoginController@twitterCallback');
 Route::get('/form','TwitterController@index');
 Route::post('/tweet','TwitterController@postTweet');
 Route::get('/logout','TwitterController@logout');
+
+// CONTENT
+Route::get('/{page}','ContentController@showPage')
+    ->where('page','(about|terms|privacy)');
