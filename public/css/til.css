@@ -54,14 +54,14 @@ body#homepage header {
     border-bottom-color: #333;
 }
 
-body#homepage footer {
+footer#defaultFooter {
     background: #5bc0de;
     color: #fff;
     line-height: 2em;
     padding: 0.5em 0;
 }
 
-body#homepage footer a {
+footer#defaultFooter a {
     color: #fff;
 }
 
@@ -165,11 +165,11 @@ h2.charCount {
         font-size: 1.2rem;
     }
 
-    body#homepage footer .row div:first-child {
+    footer#defaultFooter .row div:first-child {
         text-align: left;
     }
 
-    body#homepage footer .row div:last-child {
+    footer#defaultFooter .row div:last-child {
         text-align: right;
     }
 }
