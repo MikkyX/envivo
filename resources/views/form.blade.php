@@ -1,59 +1,92 @@
 @extends('master')
-@section('meta-title','@'.$user->screen_name.' - Tweet It Live')
+@section('meta-title','@'.$user->screen_name.' - Envivo Social')
 @section('body-id','form')
 @section('header')
-    <div class="col-xs-12 col-md-6"></div>
-    <div class="col-xs-12 col-md-6 text-right">
+    <div class="col-xs-6">
+        <img src="/images/logo.svg" title="envivo social" />
+    </div>
+    <div class="col-xs-6 text-right">
         <a class="btn btn-danger" href="/logout">
             <i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log Out
         </a>
     </div>
 @endsection
 @section('content')
-        <div class="row">
-            <div class="col-xs-9 col-sm-6 col-sm-offset-2">
-                <h2><img src="{{ $user->profile_image_url_https }}" /> {{ '@'.$user->screen_name }}</h2>
-            </div>
-            <div class="col-xs-3 col-sm-2 text-right">
-                <h2 class="charCount" v-bind:class="lengthTest">@{{ remaining_characters }}</h2>
-            </div>
-        </div>
         <form action="/tweet" enctype="multipart/form-data" id="tweetForm" method="post" v-on:submit.prevent="postTweet">
         {!! csrf_field() !!}
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
-                    <div class="input-group">
-                        <div class="input-group-addon">Prefix:</div>
-                        <input class="form-control" id="prefix_hashtags" name="prefix_hashtags" type="text" v-model="prefixHashtags" />
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="theForm">
+                <div class="row">
+                    <div class="col-xs-9 col-sm-6">
+                        <h2><img src="{{ $user->profile_image_url_https }}" /> {{ '@'.$user->screen_name }}</h2>
+                    </div>
+                    <div class="col-xs-3 col-sm-6 text-right">
+                        <h2 class="charCount" v-bind:class="lengthTest">@{{ remaining_characters }}</h2>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="input-group">
-                        <div class="input-group-addon">Suffix:</div>
-                        <input class="form-control" id="suffix_hashtags" name="suffix_hashtags" type="text" v-model="suffixHashtags" />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">Prefix:</div>
+                            <input class="form-control" id="prefix_hashtags" name="prefix_hashtags" type="text" v-model="prefixHashtags" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">Suffix:</div>
+                            <input class="form-control" id="suffix_hashtags" name="suffix_hashtags" type="text" v-model="suffixHashtags" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label class="sr-only" for="tweet">Tweet text:</label>
+                        <textarea class="form-control" id="tweet" name="tweet" rows="4" v-model="tweet" v-on:keyup.enter.prevent="enterPostTweet"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <span class="help-block"><label><input id="press_enter" name="press_enter" type="checkbox" v-model="pressEnterToSend" /> Press Enter to Send</label></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <input id="image" name="image" type="file" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><input class="btn btn-block btn-success" id="send_tweet" type="submit" value="Send" v-bind:disabled="remaining_characters >= 138 || remaining_characters < 0 || tweetInProgess" /></p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <label class="sr-only" for="tweet">Tweet text:</label>
-                    <textarea class="form-control" id="tweet" name="tweet" rows="4" v-model="tweet" v-on:keyup.enter.prevent="enterPostTweet"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
-                    <span class="help-block"><label><input id="press_enter" name="press_enter" type="checkbox" v-model="pressEnterToSend" /> Press Enter to Send</label></span>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <input id="image" name="image" type="file" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <input class="btn btn-block btn-success" id="send_tweet" type="submit" value="Send" v-bind:disabled="remaining_characters >= 138 || remaining_characters < 0 || tweetInProgess" />
-                </div>
-            </div>
+        </div>
         </form>
+@endsection
+@section('footer')
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Envivo Footer Ad -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-6161058486796813"
+                         data-ad-slot="1484127481"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 footerLinks">
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 @endsection
 @section('notifications')
     <div id="notifications">

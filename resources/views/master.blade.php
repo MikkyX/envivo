@@ -16,6 +16,15 @@
     <meta name="description" content="The best way to share live updates from any event" />
 </head>
 <body id="@yield('body-id','body')">
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93742701-1', 'auto');
+    ga('send', 'pageview');
+    </script>
     <header>
         <div class="container">
             <div class="row">
@@ -24,23 +33,9 @@
         </div>
     </header>
     <div class="container">
-        @if (Session::has('goodFlash'))
-        @endif
         @yield('content')
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <p>v{{ config('release.version') }} - Made with love, Laravel and Vue.js by <a href="https://www.mikkyx.co.uk">Michael Price</a></p>
-                    <p>
-                        <a href="https://github.com/mikkyx/tweetitlive" title="Source code on GitHub"><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
-                        <a href="https://twitter.com/mikkyx" title="Tweet me!"><i class="fa fa-twitter fa-2x"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @yield('footer')
     @yield('notifications')
     @stack('scripts')
 </body>
