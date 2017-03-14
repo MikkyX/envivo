@@ -1,27 +1,20 @@
-# Laravel PHP Framework
+# Envivo Social
+Envivo Social is the fastest and best way to provide updates to your social networks from conferences, meetings and other events requiring up to the minute updates as fast as you can get them out.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+By allowing you to pre-populate hashtag prefixes and suffixes, Envivo lets you concentrate on getting the info out to your followers - fast. As simple as hitting the Enter key and then getting straight to the next update. No waiting, no pasting.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Support
+If you are having trouble using Envivo Social, please [open an issue](https://github.com/MikkyX/envivo/issues). Try to be as explicit as possible about what was happening when the issue occurred, and provide as much detail as possible about your browser / operating system combination.
 
 ## Contributing
+Thank you for considering contributing to Envivo! If you would like to contribute, please [create a pull request](https://github.com/MikkyX/envivo/pulls) and I will review it as soon as I can.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Please don't get offended if your request is declined or I don't get to it for a while!
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please send an e-mail to Michael Price at mikkyx@gmail.com. I will review your report and act upon it as soon as I am able, and thank you in advance for reporting it to me.
 
-## License
+## Credits
+Built with [Laravel](https://laravel.com) and [vue.js](https://vuejs.org/). Deployed with [Forge](https://forge.laravel.com/). Background imagery courtesy of [StockSnap](https://stocksnap.io/), under a CC0 licence.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
