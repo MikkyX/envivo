@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use File;
-use Redirect;
-use Session;
 use Twitter;
 
 class TwitterController extends Controller
@@ -26,7 +24,7 @@ class TwitterController extends Controller
     public function index()
     {
         // We need the access token session here
-        if (Session::has('access_token')) {
+        if (session()->has('access_token')) {
             // Retrieve the user
             $user = Twitter::getCredentials();
 
@@ -35,7 +33,7 @@ class TwitterController extends Controller
             ]);
         }
 
-        return Redirect::to('/')->with('badFlash','Your login has timed out.');
+        return redirect('/')->with('badFlash','Your login has timed out.');
     }
 
     /**
@@ -87,7 +85,8 @@ class TwitterController extends Controller
 
     public function logout()
     {
-        Session::forget('access_token');
-        return Redirect::to('/')->with('goodFlash','You have been logged out.');
+        session()->flush();
+        session()->regenerate();
+        return redirect('/')->with('goodFlash','You have been logged out.');
     }
 }
