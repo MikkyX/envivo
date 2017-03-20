@@ -34,6 +34,16 @@
         </div>
     </header>
     <div class="container">
+        @if (session()->has('goodFlash'))
+        <div class="row">
+            <div class="alert alert-success col-xs-12">{{ session('goodFlash') }}</div>
+        </div>
+        @endif
+        @if (session()->has('badFlash'))
+        <div class="row">
+            <div class="alert alert-danger col-xs-12">{{ session('badFlash') }}</div>
+        </div>
+        @endif
         @yield('content')
     </div>
     @yield('footer')
