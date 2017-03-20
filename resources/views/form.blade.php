@@ -46,9 +46,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <span class="help-block"><label><input id="press_enter" name="press_enter" type="checkbox" v-model="pressEnterToSend" /> Press Enter to Send</label></span>
+                        <div class="visible-md-block visible-lg-block">
+                            <h6>Options:</h6>
+                            <span class="help-block"><label><input id="press_enter" name="press_enter" type="checkbox" v-model="pressEnterToSend" /> Press Enter to Send</label></span>
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
+                        <h6>Upload Image:</h6>
                         <input id="image" name="image" type="file" />
                     </div>
                 </div>
