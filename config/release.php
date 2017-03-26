@@ -7,5 +7,5 @@
  */
 
 return [
-    'version' => '1.0-alpha3'
+    'version' => '1.0-beta'
 ];

@@ -29,7 +29,8 @@ header {
 }
 
     header img {
-        height: 40px;
+        text-align: center;
+        width: 50%;
     }
 
 .headerLinks a:not([class^='btn']) {
@@ -150,6 +151,11 @@ h2.charCount {
         padding: 1em 0;
     }
 
+    header img {
+        height: 50px;
+        width: auto;
+    }
+
     #homepageContent h1 {
         font-size: 4rem;
     }
@@ -162,6 +168,7 @@ h2.charCount {
     }
 
     .headerLinks {
+        line-height: 50px;
         text-align: right;
     }
 
