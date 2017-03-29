@@ -11,6 +11,7 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
     <link href="/css/til.css" rel="stylesheet" type="text/css" />
+    <link href="/css/introjs.min.css" rel="stylesheet" type="text/css" />
     <script src="https://use.fontawesome.com/97d3813f05.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js"></script>
     <title>@yield('meta-title')</title>

@@ -76,7 +76,25 @@ class LoginController extends Controller
             // Get the user
             $credentials = Twitter::getCredentials();
             if (is_object($credentials) && !isset($credentials->error)) {
-                // We made it. Let's go to the form
+                // We made it!
+                // Try to find a locally stored user with this Twitter ID
+                $user = \App\User::firstOrCreate([
+                    'name'       => $credentials->screen_name,
+                    'password'   => '',
+                    'twitter_id' => $credentials->id_str
+                ]);
+
+                if ($user->wasRecentlyCreated) {
+                    // They're new
+                    $user->login_count = 1;
+                } else {
+                    // They've been here before
+                    $user->increment('login_count');
+                }
+
+                $user->save();
+
+                // Now we can go to the form
                 Session::put('access_token',$token);
                 return Redirect::to('/form');
             }

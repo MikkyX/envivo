@@ -15,6 +15,7 @@
             <p><strong>Links To Other Web Sites</strong></p>
             <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Envivo Social.</p>
             <p>Envivo Social has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Envivo Social shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+            <p>Envivo Social assumes no responsibility for the content of social media updates shared using the Service.</p>
             <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.</p>
             <p><strong>Termination</strong></p>
             <p>We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
