@@ -25,7 +25,7 @@
 
             <p>We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained. Envivo Social may change this privacy policy from time to time at Envivo Social's sole discretion.</p>
 
-            <p>This service allows you to log in to your Twitter account. We do not currently store any information in a database, however future versions of the site may require this.</p>
+            <p>This service allows you to log in to your Twitter account. Some of your Twitter profile info is retained by us locally for analytics purposes. We <em>never</em> see your password.</p>
 
             <p>Please refer to the <a href="https://twitter.com/privacy">Twitter Privacy Policy</a> for more information.</a></p>
         </div>
