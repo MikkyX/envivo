@@ -3,7 +3,7 @@
 @section('body-id','form')
 @section('header')
     <div class="col-xs-6">
-        <img src="/images/logo.svg" title="envivo social" />
+        <a href="/"><img src="/images/logo.svg" title="envivo social" /></a>
     </div>
     <div class="col-xs-6 text-right">
         <a class="btn btn-danger" href="/logout">
