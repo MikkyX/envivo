@@ -28,8 +28,12 @@ class TwitterController extends Controller
             // Retrieve the user
             $user = Twitter::getCredentials();
 
+            // We also need the copy from the database
+            $userFromDb = \App\User::where('twitter_id',$user->id_str)->first();
+
             return view('form', [
-                'user' => $user
+                'onboard' => ($userFromDb->login_count == 1),
+                'user'    => $user
             ]);
         }
 

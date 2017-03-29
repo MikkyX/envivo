@@ -15,24 +15,24 @@
         <form action="/tweet" enctype="multipart/form-data" id="tweetForm" method="post" v-on:submit.prevent="postTweet">
         {!! csrf_field() !!}
         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="theForm">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" data-intro="Welcome to Envivo Social! Would you like a quick overview?" data-step="1" id="theForm">
                 <div class="row">
                     <div class="col-xs-9 col-sm-6">
                         <h2><img src="{{ $user->profile_image_url_https }}" /> {{ '@'.$user->screen_name }}</h2>
                     </div>
                     <div class="col-xs-3 col-sm-6 text-right">
-                        <h2 class="charCount" v-bind:class="lengthTest">@{{ remaining_characters }}</h2>
+                        <h2 class="charCount" data-intro="This shows your remaining character count" data-step="2" v-bind:class="lengthTest">@{{ remaining_characters }}</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <div class="input-group">
+                        <div class="input-group" data-intro="Anything entered in here will appear at the beginning of every tweet you publish..." data-step="3">
                             <div class="input-group-addon">Prefix:</div>
                             <input class="form-control" id="prefix_hashtags" name="prefix_hashtags" type="text" v-model="prefixHashtags" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <div class="input-group">
+                        <div class="input-group" data-intro="...and anything entered in here will appear at the END of every tweet you publish" data-step="4">
                             <div class="input-group-addon">Suffix:</div>
                             <input class="form-control" id="suffix_hashtags" name="suffix_hashtags" type="text" v-model="suffixHashtags" />
                         </div>
@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="sr-only" for="tweet">Tweet text:</label>
-                        <textarea class="form-control" id="tweet" name="tweet" rows="4" v-model="tweet" v-on:keyup.enter.prevent="enterPostTweet"></textarea>
+                        <textarea class="form-control" data-intro="This is your main tweet body, where you type your tweet contents" data-step="5" id="tweet" name="tweet" placeholder="Tweet body..." rows="4" v-model="tweet" v-on:keyup.enter.prevent="enterPostTweet"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -53,12 +53,12 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <h6>Upload Image:</h6>
-                        <input id="image" name="image" type="file" />
+                        <input  data-intro="If you need to attach an image to your tweet, you can do so here" data-step="6" id="image" name="image" type="file" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <p><input class="btn btn-block btn-success" id="send_tweet" type="submit" value="Send" v-bind:disabled="remaining_characters >= 138 || remaining_characters < 0 || tweetInProgess" /></p>
+                        <p><input class="btn btn-block btn-success" data-intro="Finally, this button makes the magic happen. Happy tweeting!" data-step="7" id="send_tweet" type="submit" value="Send" v-bind:disabled="remaining_characters >= 138 || remaining_characters < 0 || tweetInProgess" /></p>
                     </div>
                 </div>
             </div>
@@ -101,8 +101,17 @@
     </div>
 @endsection
 @push('scripts')
+    @if($onboard)
+    <script src="/js/intro.min.js"></script>
+    @endif
     <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
     <script>
+        @if($onboard)
+        // Start the intro
+        introJs().start();
+        @endif
+
+        // All vue from here
         Vue.component('notification',{
             props: ['alertClass','message'],
             template: '<div class="alert @{{ alertClass }}">@{{ message }}</div>'
