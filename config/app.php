@@ -179,6 +179,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Thujohn\Twitter\TwitterServiceProvider::class,
+        App\Providers\DropboxFilesystemServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
     ],
 
     /*
