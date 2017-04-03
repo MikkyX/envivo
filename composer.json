@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
-        "thujohn/twitter": "~2.0"
+        "thujohn/twitter": "~2.0",
+        "spatie/laravel-backup": "^4.8",
+        "league/flysystem-dropbox": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
