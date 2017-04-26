@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="sr-only" for="tweet">Tweet text:</label>
-                        <textarea class="form-control" data-intro="This is your main tweet body, where you type your tweet contents" data-step="5" id="tweet" name="tweet" placeholder="Tweet body..." rows="4" v-model="tweet" v-on:keyup.enter.prevent="enterPostTweet"></textarea>
+                        <textarea class="form-control" data-intro="This is your main tweet body, where you type your tweet contents" data-step="5" id="tweet" name="tweet" placeholder="Tweet body..." rows="4" v-model="tweet" v-on:keydown.enter.prevent.stop="enterPostTweet"></textarea>
                     </div>
                 </div>
                 <div class="row">
