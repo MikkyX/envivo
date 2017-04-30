@@ -96,6 +96,8 @@ class LoginController extends Controller
 
                 // Now we can go to the form
                 Session::put('access_token',$token);
+                Session::put('user_id',$user->id);
+
                 return Redirect::to('/form');
             }
 

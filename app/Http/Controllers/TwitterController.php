@@ -81,6 +81,10 @@ class TwitterController extends Controller
         // Post the tweet
         try {
             Twitter::postTweet($tweet);
+
+            // Increment tweet count
+            \App\User::find(session('user_id'))->increment('tweet_count');
+
             return 'OK';
         } catch (\Exception $e) {
             return $e->getMessage();
